@@ -6,11 +6,12 @@ public class test {
         //Dictionary dic = new Dictionary();
 
         DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
-        DictionaryManagement dictionaryManagement = new DictionaryManagement();
-        dictionaryManagement.insertFromCommandline();
+        //DictionaryManagement dictionaryManagement = new DictionaryManagement();
+        dictionaryCommandline.dictionaryManagement.insertFromCommandline();
         //dictionaryManagement.repair();
         //dictionaryManagement.delete("lik");
-        dictionaryManagement.lookup("hello");
+        dictionaryCommandline.dictionaryManagement.lookup("like");
+        //dictionaryCommandline.Searcher();
         //dictionaryManagement.showAllWord();
     }
 

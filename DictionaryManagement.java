@@ -14,7 +14,7 @@ public class DictionaryManagement {
 
     Dictionary dic = new Dictionary();
 
-    //public DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
+    //DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
     /*CreatFile creatFile;
     DictionaryManagement() {
         dic = new Dictionary();
@@ -69,19 +69,19 @@ public class DictionaryManagement {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
     public String lookup(String word){
 
         int i = position(word);
-        if(i == 0) {
+        if(i == -1) {
             System.out.print("khong tim thay");
         }
         return dic.getWord(i).word_explain;
     }
     public void delete(String word) {
         int i = position(word);
-        if (i == 0) {
+        if (i == -1) {
             System.out.println("khong tim thay");
             return;
         }
@@ -102,6 +102,8 @@ public class DictionaryManagement {
         dic.remove(i);
         dic.addarray(i, w1);
     }
+
+
 
     /*public class CreatFile{
         public String urlFileInput = "src\\in.txt";

@@ -1,3 +1,5 @@
 book    sach
 boy con trai
 bad toi te
+hello
+xin chao
