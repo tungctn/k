@@ -66,14 +66,18 @@ public class DictionaryManagement {
         return -1;
     }
     // tìm nghĩa của từ
-    public String lookup(String word){
+    public String lookup(String word) {
 
-        int i = position(word);
-        if(i == -1) {
-            System.out.print("khong tim thay");
+
+        for (int i = 0; i < dic.size(); i++) {
+            if (word.equals(dic.getWord(i).word_target)) {
+                return dic.getWord(i).word_explain;
+            }
+
         }
-        return dic.getWord(i).word_explain;
+        return "khong tim thay";
     }
+
     // xóa từ
     public void delete(String word) {
         int i = position(word);
