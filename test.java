@@ -11,11 +11,11 @@ public class test {
         //DictionaryManagement dictionaryManagement = new DictionaryManagement();
         // test với số lượng từ là 6, copy các từ trong in.txt
         dictionaryCommandline.dictionaryManagement.insertFromCommandline();
-        //dictionaryManagement.repair();
+        //dictionaryCommandline.dictionaryManagement.repair();
         //dictionaryManagement.delete("lik");
-        dictionaryCommandline.dictionaryManagement.lookup("like"); // chức năng này bị lỗi
-        //dictionaryCommandline.Searcher();
-        //dictionaryManagement.showAllWord();
+        //dictionaryCommandline.dictionaryManagement.lookup("like"); // chức năng này bị lỗi
+        dictionaryCommandline.Searcher();
+        //dictionaryCommandline.dictionaryManagement.showAllWord();
     }
 
 }
