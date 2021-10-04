@@ -6,6 +6,7 @@ public class DictionaryCommandline {
     public DictionaryManagement dictionaryManagement = new DictionaryManagement();
 
     DictionaryCommandline(){};
+    // tìm kiem cac từ
     public void Searcher() {
         Scanner sc = new Scanner(System.in);
         System.out.println("nhap tu bn muon tra: ");

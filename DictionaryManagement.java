@@ -11,16 +11,9 @@ import java.util.logging.Logger;
 
 
 public class DictionaryManagement {
-
+    // khởi tạo dic
     Dictionary dic = new Dictionary();
-
-    //DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
-    /*CreatFile creatFile;
-    DictionaryManagement() {
-        dic = new Dictionary();
-        creatFile = new CreatFile();
-    }*/
-
+    // nhập các từ vào mảng dic
     public void insertFromCommandline() throws IOException {
         Scanner sc = new Scanner(System.in);
         int n;
@@ -34,9 +27,8 @@ public class DictionaryManagement {
             dic.addWord(w);
         }
     }
-
-
-    /*public void insertFromFile() throws  IOException {
+    // đọc file. hàm này bị lỗi
+    public void insertFromFile() throws  IOException {
 
         String url = "D:\\Java\\IdeaProjects\\src\\word.txt";
         FileInputStream fileInputStream = new FileInputStream(url);
@@ -53,7 +45,8 @@ public class DictionaryManagement {
 
             dic.addWord(w);
         }
-    }*/
+    }
+    // in ra các từ vừa nhập
     public void showAllWord() throws IOException
         {
             int n = dic.size();
@@ -63,6 +56,7 @@ public class DictionaryManagement {
                 System.out.printf(format, i + 1, dic.getWord(i).word_target, dic.getWord(i).word_explain);
             }
         }
+    // tìm vị trí từ trong mảng dic
     public int position(String word) {
         for (int i = 0; i < dic.size(); i++) {
             if (word.equals(dic.getWord(i).word_target)) {
@@ -71,6 +65,7 @@ public class DictionaryManagement {
         }
         return -1;
     }
+    // tìm nghĩa của từ
     public String lookup(String word){
 
         int i = position(word);
@@ -79,6 +74,7 @@ public class DictionaryManagement {
         }
         return dic.getWord(i).word_explain;
     }
+    // xóa từ
     public void delete(String word) {
         int i = position(word);
         if (i == -1) {
@@ -87,6 +83,7 @@ public class DictionaryManagement {
         }
         dic.remove(i);
     }
+    // sửa nghĩa của từ
     public void repair() {
         Scanner sc = new Scanner(System.in);
         System.out.println("tu muon sua:");
@@ -102,8 +99,6 @@ public class DictionaryManagement {
         dic.remove(i);
         dic.addarray(i, w1);
     }
-
-
 
     /*public class CreatFile{
         public String urlFileInput = "src\\in.txt";
