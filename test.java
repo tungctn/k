@@ -14,9 +14,9 @@ public class test {
         dictionaryCommandline.dictionaryManagement.insertFromCommandline();
         //dictionaryCommandline.dictionaryManagement.repair();
         //dictionaryManagement.delete("lik");
-        dictionaryCommandline.dictionaryManagement.lookup();
-        //dictionaryCommandline.Searcher();
-        //dictionaryCommandline.dictionaryManagement.showAllWord();
+        //dictionaryCommandline.dictionaryManagement.lookup();
+        dictionaryCommandline.Searcher();
+        dictionaryCommandline.dictionaryManagement.showAllWord();
     }
 
 }

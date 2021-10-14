@@ -15,7 +15,7 @@ public class DictionaryCommandline {
         System.out.println("cac tu tim dc:");
         for (int i = 0; i < dictionaryManagement.dic.size(); i++) {
             if (dictionaryManagement.dic.getWord(i).word_target.contains(w)) {
-                System.out.println(dictionaryManagement.dic.getWord(i).word_target);
+                System.out.println(dictionaryManagement.dic.getWord(i).word_target+": "+dictionaryManagement.dic.getWord(i).word_explain);
                 ok = true;
             }
         }
