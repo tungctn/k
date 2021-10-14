@@ -65,19 +65,29 @@ public class DictionaryManagement {
         }
         return -1;
     }
-    // tìm nghĩa của từ
-    public String lookup(String word) {
 
-
+    /*public String lookup (String word) {
         for (int i = 0; i < dic.size(); i++) {
             if (word.equals(dic.getWord(i).word_target)) {
                 return dic.getWord(i).word_explain;
             }
-
         }
         return "khong tim thay";
+    }*/
+    // tìm nghĩa của từ
+    public void lookup () {
+        Scanner sc = new Scanner(System.in);
+        boolean ok = false;
+        System.out.println("Nhap tu can tim:");
+        String word = sc.nextLine();
+        for (int i = 0; i < dic.size(); i++) {
+            if (word.equals(dic.getWord(i).word_target)) {
+                System.out.println(dic.getWord(i).word_explain);
+                ok = true;
+            }
+        }
+        if(!ok) System.out.println( "khong tim thay");
     }
-
     // xóa từ
     public void delete(String word) {
         int i = position(word);

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class test {
 
@@ -13,8 +14,8 @@ public class test {
         dictionaryCommandline.dictionaryManagement.insertFromCommandline();
         //dictionaryCommandline.dictionaryManagement.repair();
         //dictionaryManagement.delete("lik");
-        //dictionaryCommandline.dictionaryManagement.lookup("like"); // chức năng này bị lỗi
-        dictionaryCommandline.Searcher();
+        dictionaryCommandline.dictionaryManagement.lookup();
+        //dictionaryCommandline.Searcher();
         //dictionaryCommandline.dictionaryManagement.showAllWord();
     }
 
