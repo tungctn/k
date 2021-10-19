@@ -1,7 +1,6 @@
 # Dictionary English - Vietnamese
 
-https://docs.google.com/document/d/1H6pGY8jj0QPrbCXCOzDF3B_uWzTFbhsBJuMKUMsid5Q/edit?usp=sharing
-
+3. Phiên bản từ điển command line cải tiến lần 2
 
 DictionaryCommandline
 
