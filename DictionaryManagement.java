@@ -1,18 +1,16 @@
-
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 
 public class DictionaryManagement {
     // khởi tạo dic
     Dictionary dic = new Dictionary();
+
     // nhập các từ vào mảng dic
     public void insertFromCommandline() throws IOException {
         Scanner sc = new Scanner(System.in);
@@ -27,23 +25,32 @@ public class DictionaryManagement {
             dic.addWord(w);
         }
     }
-    // đọc file. hàm này bị lỗi
+
     public void insertFromFile() throws  IOException {
 
-        String url = "D:\\Java\\IdeaProjects\\src\\word.txt";
-        FileInputStream fileInputStream = new FileInputStream(url);
-        Scanner scanner = new Scanner(fileInputStream);
-        word w;
-        while (scanner.hasNext()) {
-            w = new word();
-
-            String s = scanner.next();
-            String[] a = s.split("\t");
-
-            w.word_target = a[0];
-            w.word_explain = a[1];
-
-            dic.addWord(w);
+        word w = new word();
+        int i = 0;
+        try
+        {
+            FileInputStream fis=new FileInputStream("C:\\Users\\admin\\Desktop\\Dictionary\\word.txt");
+            Scanner sc=new Scanner(fis);    //file to be scanned
+            while(sc.hasNextLine())
+            {
+                String s = sc.nextLine();
+                if (i%2 == 0) {
+                    w.word_target = s;
+                } else {
+                    w.word_explain = s;
+                    dic.addWord(w);
+                    w = new word();
+                }
+                i++;
+            }
+            sc.close();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
         }
     }
     // in ra các từ vừa nhập
@@ -117,8 +124,5 @@ public class DictionaryManagement {
     /*public class CreatFile{
         public String urlFileInput = "src\\in.txt";
         public String urlFileOutput = "src\\word.txt";
-
     }*/
 }
-
-
