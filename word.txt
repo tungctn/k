@@ -1,5 +1,12 @@
-book    sach
-boy con trai
-bad toi te
+book
+sách giáo khoa
+change
+thay đổi
+near
+gần
+love
+yêu
+like
+yêu thích
 hello
-xin chao
+xin chào
