@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class test {
+public class Main {
 
     public static void main(String[] args) throws IOException {
 
@@ -15,11 +15,12 @@ public class test {
 
         while (true) {
 
-            System.out.println("enter 1: edit word");
-            System.out.println("enter 2: translate");
-            System.out.println("enter 3: search word");
-            System.out.println("enter 4: show all word");
-            System.out.println("Choose ?");
+            System.out.println("nhập số 1: sửa từ");
+            System.out.println("nhập số 2: dịch");
+            System.out.println("nhập số 3: tìm kiếm");
+            System.out.println("nhập số 4: hiển thị danh sách");
+            System.out.println("nhập số 5: xuất dữ liệu ra tệp");
+            System.out.println("Nhập số ...");
             int n = sc.nextInt();
             if (n == 1) {
                 dictionaryCommandline.dictionaryManagement.repair();
@@ -29,6 +30,8 @@ public class test {
                 dictionaryCommandline.Searcher();
             } else if (n == 4) {
                 dictionaryCommandline.dictionaryManagement.showAllWord();
+            } else if (n == 5) {
+                dictionaryCommandline.dictionaryManagement.dictionaryExportToFile();
             } else continue;
             //dictionaryCommandline.dictionaryManagement.repair();
             //dictionaryManagement.delete("lik");
