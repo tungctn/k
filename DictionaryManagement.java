@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
+import java.io.FileWriter;
 
 public class DictionaryManagement {
     // khởi tạo dic
@@ -15,7 +15,7 @@ public class DictionaryManagement {
     public void insertFromCommandline() throws IOException {
         Scanner sc = new Scanner(System.in);
         int n;
-        System.out.print("nhap so luong tu them vao: ");
+        System.out.print("nhập số lượng từ cần thêm: ");
         n = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < n; i++) {
@@ -26,13 +26,30 @@ public class DictionaryManagement {
         }
     }
 
+    public void dictionaryExportToFile() throws IOException {
+        int len = dic.size();
+        try {
+            FileWriter fw = new FileWriter("D:\\dictionaryExportToFile.txt");
+            for(int i = 0; i < len; i ++ ) {
+                fw.write(dic.getWord(i).word_target);
+                fw.write("\n");
+                fw.write(dic.getWord(i).word_explain);
+                fw.write("\n");
+            }
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("địa chỉ tệp được lưu: D:\\dictionaryExportToFile.txt");
+    }
+
     public void insertFromFile() throws  IOException {
 
         word w = new word();
         int i = 0;
         try
         {
-            FileInputStream fis=new FileInputStream("C:\\Users\\admin\\Desktop\\Dictionary\\word.txt");
+            FileInputStream fis=new FileInputStream("C:\\Users\\admin\\Desktop\\Dictionary\\OOP\\word.txt");
             Scanner sc=new Scanner(fis);    //file to be scanned
             while(sc.hasNextLine())
             {
@@ -85,7 +102,7 @@ public class DictionaryManagement {
     public void lookup () {
         Scanner sc = new Scanner(System.in);
         boolean ok = false;
-        System.out.println("Nhap tu can tim:");
+        System.out.println("Nhập từ cần tìm:");
         String word = sc.nextLine();
         for (int i = 0; i < dic.size(); i++) {
             if (word.equals(dic.getWord(i).word_target)) {
@@ -93,13 +110,13 @@ public class DictionaryManagement {
                 ok = true;
             }
         }
-        if(!ok) System.out.println( "khong tim thay");
+        if(!ok) System.out.println( "không tìm thấy");
     }
     // xóa từ
     public void delete(String word) {
         int i = position(word);
         if (i == -1) {
-            System.out.println("khong tim thay");
+            System.out.println("không tìm thấy");
             return;
         }
         dic.remove(i);
@@ -107,11 +124,11 @@ public class DictionaryManagement {
     // sửa nghĩa của từ
     public void repair() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("tu muon sua:");
+        System.out.println("từ muốn sửa:");
         String w = sc.nextLine();
         int i = position(w);
         if (i == 0) {
-            System.out.println("khong tim thay");
+            System.out.println("không tìm thấy");
             return;
         }
         word w1 = new word();
@@ -121,8 +138,4 @@ public class DictionaryManagement {
         dic.addarray(i, w1);
     }
 
-    /*public class CreatFile{
-        public String urlFileInput = "src\\in.txt";
-        public String urlFileOutput = "src\\word.txt";
-    }*/
 }
