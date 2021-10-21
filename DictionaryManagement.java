@@ -1,11 +1,12 @@
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-import java.io.FileWriter;
+
 
 public class DictionaryManagement {
     // khởi tạo dic
@@ -49,7 +50,7 @@ public class DictionaryManagement {
         int i = 0;
         try
         {
-            FileInputStream fis=new FileInputStream("C:\\Users\\admin\\Desktop\\Dictionary\\OOP\\word.txt");
+            FileInputStream fis=new FileInputStream("C:\\Users\\admin\\Desktop\\OOP_N3_BTL_N10\\source_code\\word.txt");
             Scanner sc=new Scanner(fis);    //file to be scanned
             while(sc.hasNextLine())
             {
@@ -113,7 +114,10 @@ public class DictionaryManagement {
         if(!ok) System.out.println( "không tìm thấy");
     }
     // xóa từ
-    public void delete(String word) {
+    public void delete() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("từ muốn xoá:");
+        String word = sc.nextLine();
         int i = position(word);
         if (i == -1) {
             System.out.println("không tìm thấy");
