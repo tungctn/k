@@ -11,7 +11,6 @@ public class Main {
         dictionaryCommandline.dictionaryManagement.insertFromFile();
 
         Scanner sc = new Scanner(System.in);
-        dictionaryCommandline.dictionaryManagement.insertFromCommandline();
 
         while (true) {
 
@@ -20,6 +19,8 @@ public class Main {
             System.out.println("nhập số 3: tìm kiếm");
             System.out.println("nhập số 4: hiển thị danh sách");
             System.out.println("nhập số 5: xuất dữ liệu ra tệp");
+            System.out.println("nhập số 6: xóa từ");
+            System.out.println("nhập số 7: thêm từ");
             System.out.println("Nhập số ...");
             int n = sc.nextInt();
             if (n == 1) {
@@ -32,6 +33,10 @@ public class Main {
                 dictionaryCommandline.dictionaryManagement.showAllWord();
             } else if (n == 5) {
                 dictionaryCommandline.dictionaryManagement.dictionaryExportToFile();
+            } else if (n == 6) {
+                dictionaryCommandline.dictionaryManagement.delete();
+            } else if (n == 7) {
+                dictionaryCommandline.dictionaryManagement.insertFromCommandline();
             } else continue;
             //dictionaryCommandline.dictionaryManagement.repair();
             //dictionaryManagement.delete("lik");
