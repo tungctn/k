@@ -1,4 +1,6 @@
 package uet.oop.bomberman.entities.animatableEntities;
+import uet.oop.bomberman.BombermanGame;
+
 
 import javafx.scene.image.Image;
 import uet.oop.bomberman.Board;
@@ -66,6 +68,7 @@ public class Flame extends AnimatableEntities{
         for(int j = entity2.size()-1; j >= 0; j --){
           if(entity2.get(j).getBoardX() == boardX&&entity2.get(j).getBoardY() == boardY - i){
             if(!(entity2.get(j) instanceof Bomber)){ entity2.get(j).destroyEntity();}
+            else BombermanGame.WinOrLose = "lose";
           }
         }
       }
@@ -93,6 +96,7 @@ public class Flame extends AnimatableEntities{
         for(int j = entity2.size()-1; j >= 0; j --){
           if(entity2.get(j).getBoardX() == boardX + i&&entity2.get(j).getBoardY() == boardY){
             if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity(); }
+            else BombermanGame.WinOrLose = "lose";
           }
         }
       }
@@ -120,6 +124,7 @@ public class Flame extends AnimatableEntities{
         for(int j = entity2.size()-1; j >= 0; j --){
           if(entity2.get(j).getBoardX() == boardX &&entity2.get(j).getBoardY() == boardY + i){
             if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity();}
+            else BombermanGame.WinOrLose = "lose";
           }
         }
       }
@@ -147,6 +152,7 @@ public class Flame extends AnimatableEntities{
         for(int j = entity2.size()-1; j >= 0; j --){
           if(entity2.get(j).getBoardX() == boardX - i&&entity2.get(j).getBoardY() == boardY){
             if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity();}
+            else BombermanGame.WinOrLose = "lose";
           }
         }
       }

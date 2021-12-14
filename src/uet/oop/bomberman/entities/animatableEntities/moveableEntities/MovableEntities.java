@@ -116,12 +116,6 @@ public abstract class MovableEntities extends AnimatableEntities {
     if (left) xS -= speed * Sprite.SCALE;
     if (right) xS += speed * Sprite.SCALE;
 
-    //Thứ tự 4 cái này là quan trọng khi nhiều nút đươc bấm cùng lúc
-//    if (xS > 0) facingDirection = "RIGHT";
-//    if (xS < 0) facingDirection = "LEFT";
-//    if (yS > 0) facingDirection = "DOWN";
-//    if (yS < 0) facingDirection = "UP";
-
     if (xS == 0 && yS == 0) {
       moving = false;
       return;
@@ -135,38 +129,11 @@ public abstract class MovableEntities extends AnimatableEntities {
     if (canMoveBrickAndWall(xS,yS)) {
       this.x += xS;
       this.y += yS;
-      realBodyRectangle.setX(realBodyRectangle.getX() + xS);
     } else { chooseDirectionRandom(); }
 
-    System.out.println();
     // Cập nhật boardX,Y
     boardX = x / Sprite.SCALED_SIZE;
     boardY = y / Sprite.SCALED_SIZE;
+    realBodyRectangle.setX(realBodyRectangle.getX() + xS);
   }
-
-  public void chooseDirectionOneal() {
-//    Entity object = null;
-//    System.out.println(boardX+"  "+boardY+"\n");
-//    object = board.getStillObjectByBoard(boardX,boardY-1);
-//    if((object instanceof Wall || object instanceof Brick)) {
-//      System.out.println("up");
-//    }
-//    object = board.getStillObjectByBoard(boardX+1,boardY);
-//    if((object instanceof Wall || object instanceof Brick)) {
-//      System.out.println("left");
-//    }
-//    object = board.getStillObjectByBoard(boardX,boardY+1);
-//    if((object instanceof Wall || object instanceof Brick)) {
-//      System.out.println("down");
-//    }
-//    object = board.getStillObjectByBoard(boardX-1,boardY);
-//    if((object instanceof Wall || object instanceof Brick)) {
-//      System.out.println("right");
-//    }
-
-  }
-  public double distanceTwoPoint(int x1, int y1, int x2, int y2) {
-    return Math.sqrt((double)((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
-  }
-
 }

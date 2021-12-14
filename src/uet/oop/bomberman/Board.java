@@ -140,7 +140,7 @@ public class Board {
             entities.add(new Balloon(j, i, Sprite.balloom_right1.getFxImage(),  this));
             break;
           case '2':
-            entities.add(new Oneal(j, i, Sprite.oneal_right1.getFxImage()));
+            entities.add(new Oneal(j, i, Sprite.oneal_right1.getFxImage(),  this));
             break;
           case 'b':
             object = new BombItem(j, i, Sprite.powerup_bombs.getFxImage());

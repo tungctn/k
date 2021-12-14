@@ -61,13 +61,18 @@ public class BombermanGame extends Application {
                 }
                 if (WinOrLose =="lose") {
                     screenPane.getChildren().setAll(new Label("YOU LOSE"));
+                    screenPane.getChildren().add(canvas);
+                    WinOrLose = "";
+                    board = new Board(scene, board.levelGame);
+                    stage.setScene(scene);
                 }
                 if (WinOrLose =="win") {
                     screenPane.getChildren().setAll(new Label("YOU WIN"));
-                 //   screenPane.getChildren().add(canvas);
-                 //   WinOrLose = "";
-                 //   board = new Board(scene,2);
-                 //   stage.setScene(scene);
+                    screenPane.getChildren().add(canvas);
+                    WinOrLose = "";
+                    board.levelGame++;
+                    board = new Board(scene,board.levelGame);
+                    stage.setScene(scene);
                 }
                 render();
                 update();
@@ -85,8 +90,4 @@ public class BombermanGame extends Application {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         board.render(gc);
     }
-
-
-
-
 }

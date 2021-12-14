@@ -39,16 +39,6 @@ public class Balloon extends MovableEntities {
    // collisionHandler();
   }
 
-//  @Override
-//  public void moveHandler() {}
-
-  //@Override
-  //public boolean canMoveBrickAndWall(int xS, int yS) {
-  //  return false;
-  //}
-
-
-
   @Override
   public void collide(Entity entity) {
 

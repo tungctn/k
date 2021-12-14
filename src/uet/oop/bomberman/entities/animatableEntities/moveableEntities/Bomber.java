@@ -51,17 +51,24 @@ public class Bomber extends MovableEntities {
        }
     }
 
+    public double distanceTwoPoint(int x1, int y1, int x2, int y2) {
+        return Math.sqrt((double)((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
+    }
+
     @Override
     public void update() {
-        imageAnimationHandler();
-        if(!alive) {
-            if (deadAnimeTime > 0) {
-                --deadAnimeTime;
-            } else {
-                BombermanGame.WinOrLose = "lose";
-            }
-            return;
+
+        List<Entity> entity2 = board.getEntities();
+        int j=board.vitriBomber;
+        for(int i = entity2.size()-1; i>= 0 && i!=j; i--){
+            if(distanceTwoPoint(entity2.get(i).getX(),entity2.get(i).getY(), entity2.get(j).getX(),entity2.get(j).getY())<1.5) BombermanGame.WinOrLose="lose";
+
         }
+
+
+
+
+        imageAnimationHandler();
         moveHandler();
         collisionHandler();
         //printToScene("x: " + boardX + ", y: " + boardY + " " + facingDirection + ", Rectangle: " + realBodyRectangle.getX() + " " + realBodyRectangle.getY());
@@ -85,9 +92,7 @@ public class Bomber extends MovableEntities {
     }*/
 
     public void collide(Entity entity) {
-        if (entity instanceof Balloon || entity instanceof Oneal || entity instanceof Flame) {
-            seftDestruct();
-        }
+
     }
 
     // Hàm vẽ hình chữ nhật để debug
