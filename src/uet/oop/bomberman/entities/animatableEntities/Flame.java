@@ -19,6 +19,8 @@ public class Flame extends AnimatableEntities{
   private boolean edge = false;
   private int time = 20;
 
+  public double distance = 1.1;
+
   public Flame(int boardX, int boardY, int size, Board board) {
     super(boardX, boardY, Sprite.bomb_exploded.getFxImage(), board);
     this.size = size;
@@ -66,7 +68,8 @@ public class Flame extends AnimatableEntities{
         break;
       } else {
         for(int j = entity2.size()-1; j >= 0; j --){
-          if(entity2.get(j).getBoardX() == boardX&&entity2.get(j).getBoardY() == boardY - i){
+          // if()
+          if(distanceTwoPoint(entity2.get(j).getBoardX(), entity2.get(j).getBoardY(), boardX, boardY - i)<distance){
             if(!(entity2.get(j) instanceof Bomber)){ entity2.get(j).destroyEntity();}
             else BombermanGame.WinOrLose = "lose";
           }
@@ -94,8 +97,8 @@ public class Flame extends AnimatableEntities{
         break;
       } else {
         for(int j = entity2.size()-1; j >= 0; j --){
-          if(entity2.get(j).getBoardX() == boardX + i&&entity2.get(j).getBoardY() == boardY){
-            if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity(); }
+          if(distanceTwoPoint(entity2.get(j).getBoardX(), entity2.get(j).getBoardY(), boardX+i, boardY)<distance){
+            if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity();}
             else BombermanGame.WinOrLose = "lose";
           }
         }
@@ -122,7 +125,7 @@ public class Flame extends AnimatableEntities{
         break;
       } else {
         for(int j = entity2.size()-1; j >= 0; j --){
-          if(entity2.get(j).getBoardX() == boardX &&entity2.get(j).getBoardY() == boardY + i){
+          if(distanceTwoPoint(entity2.get(j).getBoardX(), entity2.get(j).getBoardY(), boardX, boardY + i)<distance){
             if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity();}
             else BombermanGame.WinOrLose = "lose";
           }
@@ -150,7 +153,7 @@ public class Flame extends AnimatableEntities{
         break;
       } else {
         for(int j = entity2.size()-1; j >= 0; j --){
-          if(entity2.get(j).getBoardX() == boardX - i&&entity2.get(j).getBoardY() == boardY){
+          if(distanceTwoPoint(entity2.get(j).getBoardX(), entity2.get(j).getBoardY(), boardX-i, boardY)<distance){
             if(!(entity2.get(j) instanceof Bomber)) {entity2.get(j).destroyEntity();}
             else BombermanGame.WinOrLose = "lose";
           }
@@ -211,5 +214,9 @@ public class Flame extends AnimatableEntities{
   @Override
   public void update() {
     animate();
+  }
+
+  public double distanceTwoPoint(int x1, int y1, int x2, int y2) {
+    return Math.sqrt((double)((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
   }
 }
