@@ -9,8 +9,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.animatableEntities.moveableEntities.Bomber;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.utils.GameScreen;
+
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.lang.Math;
 
 public class BombermanGame extends Application {
@@ -20,8 +26,9 @@ public class BombermanGame extends Application {
     public static String WinOrLose = "";
     public int loopCount = 0;
     public long start = System.currentTimeMillis();
-
-
+    public  static int  levelGame=2;
+    public static Clip clip;
+    
     
     private GraphicsContext gc;
     private Canvas canvas;
@@ -29,10 +36,16 @@ public class BombermanGame extends Application {
     // Tao scene
     Scene scene = new Scene(screenPane);
     // Tao board
-    Board board = new Board(scene,1);
+    Board board = new Board(scene);
     public static void main(String[] args) { launch(args); }
     @Override
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage) throws InterruptedException, IOException, UnsupportedAudioFileException, LineUnavailableException {
+        File file = new File("res\\tieng-de-keu.wav");
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+        clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         // Tao root container
         screenPane.setMaxWidth(Sprite.SCALED_SIZE * SCREEN_WIDTH);
         screenPane.setMaxHeight(Sprite.SCALED_SIZE * SCREEN_HEIGHT);
@@ -63,17 +76,22 @@ public class BombermanGame extends Application {
                     screenPane.getChildren().setAll(new Label("YOU LOSE"));
                     screenPane.getChildren().add(canvas);
                     WinOrLose = "";
-                    board = new Board(scene, board.levelGame);
+                    System.out.println("lose"+board);
+                    board = new Board(scene);
                     stage.setScene(scene);
                 }
                 if (WinOrLose =="win") {
                     screenPane.getChildren().setAll(new Label("YOU WIN"));
                     screenPane.getChildren().add(canvas);
                     WinOrLose = "";
-                    board.levelGame++;
-                    board = new Board(scene,board.levelGame);
+                    if(levelGame==5) levelGame=1;
+                    else levelGame++;
+                    System.out.println("win"+levelGame);
+                    board = new Board(scene);
                     stage.setScene(scene);
                 }
+
+
                 render();
                 update();
             }
@@ -90,4 +108,6 @@ public class BombermanGame extends Application {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         board.render(gc);
     }
+
+
 }
