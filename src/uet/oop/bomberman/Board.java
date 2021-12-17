@@ -1,5 +1,6 @@
 package uet.oop.bomberman;
 
+import uet.oop.bomberman.BombermanGame;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import uet.oop.bomberman.entities.*;
@@ -27,7 +28,8 @@ import java.util.Scanner;
 public class Board {
   public int width;
   public int height;
-  public Entity BoardBomber = null;
+ //
+ // public Entity BoardBomber = null;
   private List<Entity> entities = new ArrayList<>();
   private List<Entity> stillObjects = new ArrayList<>();
 
@@ -36,12 +38,11 @@ public class Board {
   private List<Entity> stillObjectsBuffer = new ArrayList<>();
 
   public int vitriBomber = -1;
-  public int levelGame = 1;
   private Scene scene = null;
 
-  public Board(Scene scene, int levelGame) {
+  public Board(Scene scene) {
     this.scene = scene;
-    loadLevel(levelGame);
+    loadLevel(BombermanGame.levelGame);
   }
 
   public Scene getScene() {
